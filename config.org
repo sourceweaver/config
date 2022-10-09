@@ -1,0 +1,724 @@
+#+title: config
+#+author: sourceweaver
+#+export_file_name: README.md
+#+property: header-args:elisp :exports code
+#+property: header-args:snippet :exports code
+#+STARTUP: overview
+* Personal Config
+** Editors
+*** Emacs
+**** packages.el
+These are the packages I grab from MELPA:
+#+begin_src elisp :tangle ~/.doom.d/packages.el :mkdirp yes :eval no
+;; -*- no-byte-compile: t; -*-
+;; ASDF for Common Lisp
+(package! sly-asdf)
+
+;; Beautiful HTML export from org-mode
+(package! htmlize)
+
+;; GitHub Flavored Markdown export from org-mode
+(package! ox-gfm)
+
+;; Dash in Emacs (Unmaintained)
+;; (package! helm-dash)
+
+;; DevDocs in Emacs
+(package! devdocs)
+#+end_src
+**** init.el
+The modules I use from what Doom provides:
+
+Input:
+#+name: doom-input
+#+begin_src elisp :eval no
+:input
+;;chinese
+;;japanese
+;;layout            ; auie,ctsrnm is the superior home row
+#+end_src
+
+Completion:
+#+name: doom-completion
+#+begin_src elisp :eval no
+:completion
+company             ; the ultimate code completion backend
+;;helm              ; the *other* search engine for love and life
+;;ido               ; the other *other* search engine...
+ivy                 ; a search engine for love and life
+;;vertico           ; the search engine of the future
+#+end_src
+
+UI:
+#+name: doom-ui
+#+begin_src elisp :eval no
+:ui
+;;deft              ; notational velocity for Emacs
+doom                ; what makes DOOM look the way it does
+doom-dashboard      ; a nifty splash screen for Emacs
+doom-quit           ; DOOM quit-message prompts when you quit Emacs
+;;(emoji +unicode)  ; 🙂
+hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+;;hydra
+indent-guides       ; highlighted indent columns
+ligatures           ; ligatures and symbols to make your code pretty again
+;;minimap           ; show a map of the code on the side
+modeline            ; snazzy, Atom-inspired modeline, plus API
+;;nav-flash         ; blink cursor line after big motions
+;;neotree           ; a project drawer, like NERDTree for vim
+ophints             ; highlight the region an operation acts on
+(popup +defaults)   ; tame sudden yet inevitable temporary windows
+;;tabs              ; a tab bar for Emacs
+treemacs            ; a project drawer, like neotree but cooler
+;;unicode           ; extended unicode support for various languages
+vc-gutter           ; vcs diff in the fringe
+vi-tilde-fringe     ; fringe tildes to mark beyond EOB
+;;window-select     ; visually switch windows
+workspaces          ; tab emulation, persistence & separate workspaces
+;;zen               ; distraction-free coding or writing
+#+end_src
+
+Editor:
+#+name: doom-editor
+#+begin_src elisp :eval no
+:editor
+(evil +everywhere)  ; come to the dark side, we have cookies
+file-templates      ; auto-snippets for empty files
+fold                ; (nigh) universal code folding
+;;(format+onsave)    ; automated prettiness
+;;god               ; run Emacs commands without modifier keys
+;;lispy             ; vim for lisp, for people who don't like vim
+multiple-cursors    ; editing in many places at once
+;;objed             ; text object editing for the innocent
+;;parinfer          ; turn lisp into python, sort of
+;;rotate-text       ; cycle region at point between text candidates
+snippets            ; my elves. They type so I don't have to
+;;word-wrap         ; soft wrapping with language-aware indent
+#+end_src
+
+Emacs:
+#+name: doom-emacs
+#+begin_src elisp :eval no
+:emacs
+dired             ; making dired pretty [functional]
+electric          ; smarter, keyword-based electric-indent
+;;ibuffer         ; interactive buffer management
+undo              ; persistent, smarter undo for your inevitable mistakes
+vc                ; version-control and Emacs, sitting in a tree
+#+end_src
+
+Term:
+#+name: doom-term
+#+begin_src elisp :eval no
+:term
+;;eshell            ; the elisp shell that works everywhere
+;;shell             ; simple shell REPL for Emacs
+term                ; basic terminal emulator for Emacs
+;;vterm             ; the best terminal emulation in Emacs
+#+end_src
+
+Checkers:
+#+name: doom-checkers
+#+begin_src elisp :eval no
+:checkers
+syntax              ; tasing you for every semicolon you forget
+;;(spell +flyspell) ; tasing you for misspelling mispelling
+;;grammar           ; tasing grammar mistake every you make
+#+end_src
+
+Tools:
+#+name: doom-tools
+#+begin_src elisp :eval no
+:tools
+;;ansible
+;;debugger          ; FIXME stepping through code, to help you add bugs
+;;direnv
+;;docker
+editorconfig        ; let someone else argue about tabs vs spaces
+;;ein               ; tame Jupyter notebooks with emacs
+(eval +overlay)     ; run code, run (also, repls)
+;;gist              ; interacting with github gists
+lookup              ; navigate your code and its documentation
+lsp                 ; M-x vscode
+magit               ; a git porcelain for Emacs
+make                ; run make tasks from Emacs
+;;pass              ; password manager for nerds
+;;pdf               ; pdf enhancements
+;;prodigy           ; FIXME managing external services & code builders
+;;rgb               ; creating color strings
+;;taskrunner        ; taskrunner for all your projects
+;;terraform         ; infrastructure as code
+;;tmux              ; an API for interacting with tmux
+;;upload            ; map local to remote projects via ssh/ftp
+#+end_src
+
+OS:
+#+name: doom-os
+#+begin_src elisp :eval no
+:os
+(:if IS-MAC macos)  ; improve compatibility with macOS
+;;tty               ; improve the terminal Emacs experience
+#+end_src
+
+Lang:
+#+name: doom-lang
+#+begin_src elisp :eval no
+:lang
+;;cc                ; C > C++ == 1
+;;clojure           ; java with a lisp
+common-lisp         ; if you've seen one lisp, you've seen them all
+crystal ;(+lsp)     ; ruby at the speed of c
+;;data              ; config/data formats
+;;elixir            ; erlang done right
+;;elm               ; care for a cup of TEA?
+emacs-lisp          ; drown in parentheses
+;;erlang            ; an elegant language for a more civilized age
+;;ess               ; emacs speaks statistics
+;;factor
+;;gdscript          ; the language you waited for
+(go +lsp)           ; the hipster dialect
+json                ; At least it ain't XML
+;;(java +lsp)       ; the poster child for carpal tunnel syndrome
+(javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
+;;julia             ; a better, faster MATLAB
+;;kotlin            ; a better, slicker Java(Script)
+;;latex             ; writing papers in Emacs has never been so fun
+;;lua               ; one-based indices? one-based indices
+markdown            ; writing docs for people to ignore
+;;(nim +lsp)        ; python + lisp at the speed of c
+;;nix               ; I hereby declare "nix geht mehr!"
+;;ocaml             ; an objective camel
+org                 ; organize your plain life in plain text
+;;plantuml          ; diagrams for confusing people more
+;;python            ; beautiful is better than ugly
+;;qt                ; the 'cutest' gui framework ever
+;;racket            ; a DSL for DSLs
+;;rest              ; Emacs as a REST client
+;;rst               ; ReST in peace
+;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+;;(scheme +guile)   ; a fully conniving family of lisps
+sh                  ; she sells {ba,z,fi}sh shells on the C xor
+web                 ; the tubes
+yaml                ; JSON, but readable
+;;zig               ; C, but simpler
+#+end_src
+
+Email:
+#+name: doom-email
+#+begin_src elisp :eval no
+:email
+;;(mu4e +org +gmail)
+;;notmuch
+;;(wanderlust +gmail)
+#+end_src
+
+App:
+#+name: doom-app
+#+begin_src elisp :eval no
+:app
+;;calendar
+;;emms
+;;everywhere        ; *leave* Emacs!? You must be joking
+;;irc               ; how neckbeards socialize
+;;(rss +org)        ; emacs as an RSS reader
+;;twitter           ; twitter client https://twitter.com/vnought
+#+end_src
+
+Config:
+#+name: doom-config
+#+begin_src elisp :eval no
+:config
+;;literate
+(default +bindings +smartparens))
+#+end_src
+
+
+#+begin_src elisp :noweb tangle :tangle ~/.doom.d/init.el :mkdirp yes :eval no
+;;; init.el -*- lexical-binding: t; -*-
+(doom!
+       <<doom-input>>
+
+       <<doom-completion>>
+
+       <<doom-ui>>
+
+       <<doom-editor>>
+
+       <<doom-emacs>>
+
+       <<doom-term>>
+
+       <<doom-checkers>>
+
+       <<doom-tools>>
+
+       <<doom-os>>
+
+       <<doom-lang>>
+
+       <<doom-email>>
+
+       <<doom-app>>
+
+       <<doom-config>>
+#+end_src
+**** config.el
+Personal config file for Doom to load.
+Core editor settings:
+#+name: core_settings
+#+begin_src elisp :eval no
+(setq user-full-name "sourceweaver"
+      user-mail-address "sw.git@pm.me")
+
+
+(setq display-line-numbers-type t)
+(setq-default fill-column 120)
+(setq fancy-splash-image "~/Pictures/MTG/Brainstorm.jpg")
+
+;; Display indent guides:
+(setq highlight-indent-guides-method 'column)
+
+;; Set whitespace style:
+(setq-default whitespace-style '(face tabs tab-mark spaces space-mark trailing))
+
+;; Turn whitespace mode on globally:
+;; (global-whitespace-mode +1)
+
+;; Start emacs fullscreen:
+; ;(add-hook 'after-init-hook 'toggle-frame-fullscreen)
+#+end_src
+
+Theme and visual settings:
+#+name: theme_settings
+#+begin_src elisp :eval no
+(setq doom-theme 'doom-miramare)
+
+;; Other themes that I like:
+;; (setq doom-theme 'doom-xcode)
+;; (setq doom-theme 'doom-monokai-octagon)
+;; (setq doom-theme 'doom-gruvbox)
+
+;; Themes that are good for exporting:
+;; (setq doom-theme 'doom-tango)
+;; (setq doom-theme 'doom-plain)
+
+;; Font settings:
+;; TODO: Find out where doom-variable-pitch-font and doom-serif-font is used.
+(setq-default line-spacing 0.20)
+(setq-default doom-font (font-spec :family "JetBrains Mono Medium" :size 24)
+              doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 24)
+              doom-big-font (font-spec :family "JetBrains Mono Bold" :size 24)
+              doom-unicode-font (font-spec :family "IBM Plex Mono")
+              doom-serif-font (font-spec :family "IBM Plex Sans"))
+
+;; Set cursor faces and colors:
+(setq evil-normal-state-cursor '(box "cyan")
+      evil-insert-state-cursor '(box "light cyan")
+      evil-visual-state-cursor '(hollow "purple"))
+
+#+end_src
+
+Org mode settings:
+#+name: org_settings
+#+begin_src elisp :eval no
+;; Completed items get timestamped:
+(setq org-log-done 'time)
+
+;; Multiline emphasis is allowed(up-to 5 lines):
+(setq org-emphasis-regexp-components
+      '("-[:space:]('\"{" "-[:space:].,:!?;'\")}\\[" "[:space:]" "." 5))
+
+;; Load languages for org-babel:
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((crystal .t)
+   (js .t)))
+
+;; Number and order footnotes:
+(setq org-footnote-auto-adjust t)
+#+end_src
+
+Crystal mode settings:
+#+name: crystal_settings
+#+begin_src elisp :eval no
+;; Register Crystalline as a language backend:
+;; NOTE: Enable (+lsp) on `init.el` for this to take effect.
+;; (with-eval-after-load 'lsp-mode
+;;   (add-to-list 'lsp-language-id-configuration
+;;                '(crystal-mode . "crystal"))
+;;   (lsp-register-client
+;;    (make-lsp-client :new-connection (lsp-stdio-connection '("crystalline" "--stdio"))
+;;                     :activation-fn (lsp-activate-on "crystal")
+;;                     :completion-in-comments? nil
+;;                     :priority 1
+;;                     :server-id 'crystalline)))
+#+end_src
+
+Go mode settings:
+#+name: go_settings
+#+begin_src elisp :eval no
+;; Format with `goimports` instead of `gofmt`:
+(setq gofmt-command "goimports")
+
+;; Set lint rules using flycheck-golangci-lint:
+;; (setq flycheck-golangci-lint-enable-all t)
+
+;; Making flycheck work with LSP
+;; See: https://github.com/weijiangan/flycheck-golangci-lint/issues/8
+;;(defvar-Local flycheck-local-checkers nil)
+;;  (defun +flycheck-checker-get(fn checker property)
+;;    (or (alist-get property (alist-get checker flycheck-local-checkers))
+;;        (funcall fn checker property)))
+;;  (advice-add 'flycheck-checker-get :around '+flycheck-checker-get)
+
+;;(add-hook 'go-mode-hook (lambda()
+;;                            (flycheck-golangci-lint-setup)
+;;                            (setq flycheck-local-checkers '((lsp . ((next-checkers . (golangci-lint))))))))
+#+end_src
+
+Web mode settings:
+#+name: web_settings
+#+begin_src elisp :eval no
+;; Register extensions as web-mode targets:
+(add-to-list 'auto-mode-alist '("\\.gohtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ecr\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
+;; Use the ERB engine in ECR files:
+(setq web-mode-engines-alist
+      '(("erb" . "\\.ecr\\'")))
+#+end_src
+
+JS2 mode settings:
+#+name: js2_settings
+#+begin_src elisp :eval no
+(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
+#+end_src
+
+LSP mode settings:
+#+name: lsp_settings
+#+begin_src elisp :eval no
+;; Lsp tries to render links on treemacs, destroying its functionality.
+;; as a work around we disable this offending setting.
+(setq lsp-enable-links nil)
+
+;; lsp performance tuning:
+;; (setq gc-cons-threshold 100000000)
+;; (setq read-process-output-max (* 1024 1024))
+
+;; Slow lsp down:
+(setq lsp-idle-delay 0.2)
+(setq company-idle-delay 0.1)
+
+;; Add more entries to ignored directories:
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.cache\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.parcel-cache\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\build\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\lib\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\node_modules\\'"))
+#+end_src
+
+Common Lisp mode settings:
+#+name: lisp_settings
+#+begin_src elisp :eval no
+;; Make sly open vertically instead of horizontally:
+(after! sly
+  (set-popup-rule! "^\\*sly-mrepl" :ignore t))
+#+end_src
+
+Treemacs settings:
+#+name: treemacs_settings
+#+begin_src elisp :eval no
+;; Make treemacs display only the current project:
+(add-hook 'projectile-after-switch-project-hook 'treemacs-display-current-project-exclusively)
+;; Make treemacs display colorful icons:
+(setq doom-themes-treemacs-theme "doom-colors")
+
+;; Add missing icons for some extensions:
+;; FIXME:
+;; Issue #1: The icons don't load unless you manually run doom/reload
+(treemacs-define-custom-icon (format "  %s"(all-the-icons-fileicon "crystal" :height .9 :width .9 :face 'all-the-icons-purple)) "cr")
+(treemacs-define-custom-icon (format "  %s"(all-the-icons-alltheicon "html5" :height .9 :width .9 :face 'all-the-icons-orange)) "ecr")
+(treemacs-define-custom-icon (format "  %s"(all-the-icons-fileicon "gnu" :height .9 :width .9 :face 'all-the-icons-silver)) "Makefile")
+
+;; Provide a way to ignore specific extensions/globs/regexps:
+(after! treemacs
+  (defvar treemacs-file-ignore-extensions '()
+    "File extension which `treemacs-ignore-filter' will ensure are ignored")
+  (defvar treemacs-file-ignore-globs '()
+    "Globs which will are transformed to `treemacs-file-ignore-regexps' which `treemacs-ignore-filter' will ensure are ignored")
+  (defvar treemacs-file-ignore-regexps '()
+    "RegExps to be tested to ignore files, generated from `treeemacs-file-ignore-globs'")
+  (defun treemacs-file-ignore-generate-regexps ()
+    "Generate `treemacs-file-ignore-regexps' from `treemacs-file-ignore-globs'"
+    (setq treemacs-file-ignore-regexps (mapcar 'dired-glob-regexp treemacs-file-ignore-globs)))
+  (if (equal treemacs-file-ignore-globs '()) nil (treemacs-file-ignore-generate-regexps))
+  (defun treemacs-ignore-filter (file full-path)
+    "Ignore files specified by `treemacs-file-ignore-extensions', and `treemacs-file-ignore-regexps'"
+    (or (member (file-name-extension file) treemacs-file-ignore-extensions)
+        (let ((ignore-file nil))
+          (dolist (regexp treemacs-file-ignore-regexps ignore-file)
+            (setq ignore-file (or ignore-file (if (string-match-p regexp full-path) t nil)))))))
+  (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-filter))
+
+;; Actually ignore things:
+(setq treemacs-file-ignore-extensions
+      '("log"
+        ))
+(setq treemacs-file-ignore-globs
+      '("*/.log"
+        "*/node_modules"
+        "*.parcel-cache"))
+#+end_src
+
+Custom keybinds:
+#+name: keybind_settings
+#+begin_src elisp :eval no
+(setq evil-escape-key-sequence "jj")
+
+(map! :leader
+      :desc "toggle whitespace mode"
+      "t w" 'whitespace-mode)
+
+(map! :leader
+      :desc "toggle whitespace mode"
+      "t W" 'global-whitespace-mode)
+
+(map! :leader
+      :desc "toggle documentation"
+      "t k" 'lsp-ui-doc-glance)
+
+(map! :leader
+      :desc "comment line"
+      "l c" 'comment-line)
+
+(map! :after go-mode
+      :map go-mode-map
+      :leader
+      :desc "gofmt"
+      "m f" 'gofmt)
+
+(map! :after crystal-mode
+      :map crystal-mode-map
+      :leader
+      :desc "crystal format"
+      "m f" 'crystal-tool-format)
+
+(map! :after go-mode
+      :map go-mode-map
+      :leader
+      :desc "godoc at point"
+      "m k" 'godoc-at-point)
+
+(map! :after rjsx-mode
+      :map rjsx-mode-map
+      :leader
+      :desc "lsp format"
+      "m f" 'lsp-format-buffer)
+
+(map! :after web-mode
+      :map web-mode-map
+      :leader
+      :desc "editorconfig format"
+      "m f" 'editorconfig-format-buffer)
+
+(map! :after scss-mode
+      :map scss-mode-map
+      :leader
+      :desc "editorconfig format"
+      "m f" 'editorconfig-format-buffer)
+
+(map! :leader
+      :desc "reload/doom"
+      "x" 'doom/reload)
+
+(map! :leader
+      :desc "edit code block in org-mode"
+      "o c" 'org-edit-src-code)
+
+(map! :leader
+      :desc "Projectile replace with regex"
+      "p r" 'projectile-replace-regexp)
+
+(map! :leader
+      :desc "Display dev docs"
+      "t d" 'devdocs-lookup)
+#+end_src
+
+Company mode settings:
+#+name: company_settings
+#+begin_src elisp :eval no
+;; NOTE: Following lists are experimental. Extract the repeating code once you're certain
+;; with the order of things:
+(set-company-backend! 'ruby-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+(set-company-backend! 'crystal-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+(set-company-backend! 'org-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+#+end_src
+
+Devdocs Settings:
+#+name: devdocs_settings
+#+begin_src elisp :eval no
+(add-hook 'crystal-mode-hook
+          (lambda () (setq-local devdocs-current-docs '("crystal"))))
+#+end_src
+
+#+begin_src elisp :noweb tangle :tangle ~/.doom.d/config.el :mkdirp yes :eval no
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+<<core_settings>>
+<<theme_settings>>
+<<org_settings>>
+<<crystal_settings>>
+<<go_settings>>
+<<web_settings>>
+<<js2_settings>>
+<<lsp_settings>>
+<<lisp_settings>>
+<<treemacs_settings>>
+<<keybind_settings>>
+<<company_settings>>
+<<devdocs_settings>>
+#+end_src
+**** Snippets
+***** Crystal
+Comment result:
+#+begin_src snippet :tangle ~/.doom.d/snippets/crystal-mode/comment-result :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: comment_result
+# key: /cmnt-res
+# --
+# => $1
+#+end_src
+***** Markdown
+Ruby code fence:
+#+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/ruby-block :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: ruby-block
+# key: /rb-block
+# --
+\`\`\`ruby
+$1
+\`\`\`
+#+end_src
+
+Crystal code fence:
+#+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/crystal-block :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: crystal-block
+# key: /cr-block
+# --
+\`\`\`cr
+$1
+\`\`\`
+#+end_src
+
+
+README preamble:
+#+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/readme-pre :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: readme-pre
+# key: /readme-pre
+# --
+
+# $1
+
+## Build Status
+<dl>
+  <dt>Debian(x86_64)</dt>
+  <dd>
+    <a href="https://builds.sr.ht/~sourceweaver/???/commits/debian.yml.svg">
+      <img src="https://builds.sr.ht/~sourceweaver/???/commits/debian.yml.svg" alt="Build status for ???" />
+    </a>
+  </dd>
+</dl>
+
+## About
+
+$1 is a...
+
+You can get the source code from [SourceHut][1] or [Github][2]. SourceHut is the official repo
+where development happens, and the GitHub repo is an official mirror.
+
+## Usage
+
+## Report Issues
+
+## License
+
+[1]: https://git.sr.ht/~sourceweaver/???
+[2]: https://github.com/sourceweaver/???
+#+end_src
+***** Org
+Crystal code block:
+#+begin_src snippet :tangle ~/.doom.d/snippets/org-mode/crystal-block :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: crystal-src
+# key: /crsrc
+# --
+,#+begin_src crystal :results output
+$1
+,#+end_src
+#+end_src
+***** JSX
+Set state:
+#+begin_src snippet :tangle ~/.doom.d/snippets/rjsx-mode/set-state :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: setState
+# key: /stst
+# --
+this.setState((prevState) => {
+    return {
+            $1: $2
+        }
+})
+#+end_src
+
+*** COMMENT Vim
+*** COMMENT Neovim
+** COMMENT Shell & Terminals
+*** zsh
+*** Alacritty
+*** Tilix
+** COMMENT Window Managers
+*** i3
+** Other Tools
+*** Git
+My baseline Git config:
+#+begin_src conf :tangle ~/.gitconfig :eval no
+[filter "lfs"]
+    clean    = git-lfs clean -- %f
+    smudge   = git-lfs smudge -- %f
+    required = true
+
+[core]
+    editor   = vim
+    autocrlf = input
+
+[user]
+    name       = sourceweaver
+    email      = sw.git@pm.me
+    signingkey = CD3CFF04D7BD8619
+
+[commit]
+    template = ~/.gitmessage
+    gpgsign = true
+
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+#+end_src
+
+My Git commit message template:
+#+begin_src conf :tangle ~/.gitmessage :eval no
+Subject line (try to keep under 60 characters)
+
+# Multi-line description of commit,
+# feel free to be detailed.
+Signed-off-by: sourceweaver <sw.git@pm.me>
+#+end_src
+*** COMMENT SSH
