@@ -2,6 +2,8 @@
 #+author: sourceweaver
 #+export_file_name: README.md
 #+property: header-args:elisp :exports code
+#+property: header-args:conf :exports code
+#+property: header-args:shell :exports code
 #+property: header-args:snippet :exports code
 #+STARTUP: overview
 * Personal Config
@@ -264,7 +266,8 @@ Config:
        <<doom-config>>
 #+end_src
 **** config.el
-Personal config file for Doom to load.
+Personal config file for Doom to load:
+
 Core editor settings:
 #+name: core_settings
 #+begin_src elisp :eval no
@@ -568,17 +571,29 @@ Devdocs Settings:
 #+begin_src elisp :noweb tangle :tangle ~/.doom.d/config.el :mkdirp yes :eval no
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 <<core_settings>>
+
 <<theme_settings>>
+
 <<org_settings>>
+
 <<crystal_settings>>
+
 <<go_settings>>
+
 <<web_settings>>
+
 <<js2_settings>>
+
 <<lsp_settings>>
+
 <<lisp_settings>>
+
 <<treemacs_settings>>
+
 <<keybind_settings>>
+
 <<company_settings>>
+
 <<devdocs_settings>>
 #+end_src
 **** Snippets
@@ -677,10 +692,113 @@ this.setState((prevState) => {
 
 *** COMMENT Vim
 *** COMMENT Neovim
-** COMMENT Shell & Terminals
+** Shell & Terminals
 *** zsh
-*** Alacritty
-*** Tilix
+A simplified `.zshrc` that I use.
+
+Core settings:
+#+name: zsh_core_settings
+#+begin_src shell :eval no
+export ZSH="/home/itsme/.oh-my-zsh"
+
+ZSH_THEME="lambda"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="dd/mm/yyyy"
+
+plugins=()
+
+source $ZSH/oh-my-zsh.sh
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+#+end_src
+
+Path to tools:
+#+name: zsh_path
+#+begin_src shell :eval no
+# User binaries
+export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+
+# Emacs
+export PATH=$HOME/emacs/bin:$PATH
+
+# Go Config:
+export GOPATH=$HOME/dev/go
+export GOBIN=$HOME/local/go/bin
+export PATH=$GOBIN:$PATH
+export GO111MODULE=on
+
+# Java Config:
+#export PATH=$HOME/local/graalvm-ce-java17-22.0.0.2/bin:$PATH
+
+# Node.js Config:
+NODE_VERSION='v16.14.2'
+NODE_DISTRO='linux-x64'
+export PATH=$HOME/local/node-$NODE_VERSION-$NODE_DISTRO/bin:$PATH
+
+# Crystal Config:
+CRYSTAL_COMPILER='1.5.0-llvm14-glibc'
+export PATH=$HOME/local/crystal-$CRYSTAL_COMPILER/bin:$PATH
+
+# Ruby:
+export PATH=$HOME/local/ruby/bin:$PATH
+
+# Nvim Config:
+#export PATH=$HOME/local/nvim/bin:$PATH
+#+end_src
+
+Some aliases:
+#+name: zsh_alias
+#+begin_src shell :eval no
+# These aliases override zsh plugins.
+# For a full list of aliases, run `alias`.
+# ZSH
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh='vim ~/.oh-my-zsh'
+
+# TERM
+alias x='exit'
+alias q='exit'
+alias c='clear'
+
+# GIT
+alias gts='git status'
+alias gta='git add .'
+
+# UNIX
+alias top='htop'
+alias vim='nvim'
+#+end_src
+
+Some functions:
+#+name: zsh_functions
+#+begin_src shell :eval no
+# GIT
+gtc()     { git commit -m $1 } # $1: fixed bugs
+gtp()     { git push $1 $2   } # $1: origin $2: master
+
+# PERFORMANCE
+cpu_perf_mode() { echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor } # Get mode
+cpu_eco_mode()  { echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor   } # Set Power Save
+cpu_mode()      { cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor                         } # Set Perf
+
+# EDITORCONFIG
+spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
+#+end_src
+
+#+begin_src shell :noweb tangle :tangle ~/.zshrc
+<<zsh_core_settings>>
+
+<<zsh_path>>
+
+<<zsh_alias>>
+
+<<zsh_functions>>
+#+end_src
+*** COMMENT Alacritty
+*** COMMENT Tilix
 ** COMMENT Window Managers
 *** i3
 ** Other Tools
