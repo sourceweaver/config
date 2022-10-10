@@ -7,11 +7,10 @@
 #+property: header-args:snippet :exports code
 #+property: header-args:yaml :exports code
 #+STARTUP: overview
-* Personal Config
-** Editors
-*** Emacs
-**** packages.el
-These are the packages I grab from MELPA:
+* My Personal Config
+** Emacs
+*** packages.el
+*These are the packages that I grab from MELPA*
 #+begin_src elisp :tangle ~/.doom.d/packages.el :mkdirp yes :eval no
 ;; -*- no-byte-compile: t; -*-
 ;; ASDF for Common Lisp
@@ -29,10 +28,10 @@ These are the packages I grab from MELPA:
 ;; DevDocs in Emacs
 (package! devdocs)
 #+end_src
-**** init.el
-The modules I use from what Doom provides:
+*** init.el
+*These are the modules that I enable*
 
-Input:
+*Input:*
 #+name: doom-input
 #+begin_src elisp :eval no
 :input
@@ -41,7 +40,7 @@ Input:
 ;;layout            ; auie,ctsrnm is the superior home row
 #+end_src
 
-Completion:
+*Completion:*
 #+name: doom-completion
 #+begin_src elisp :eval no
 :completion
@@ -52,7 +51,7 @@ ivy                 ; a search engine for love and life
 ;;vertico           ; the search engine of the future
 #+end_src
 
-UI:
+*UI:*
 #+name: doom-ui
 #+begin_src elisp :eval no
 :ui
@@ -81,7 +80,7 @@ workspaces          ; tab emulation, persistence & separate workspaces
 ;;zen               ; distraction-free coding or writing
 #+end_src
 
-Editor:
+*Editor:*
 #+name: doom-editor
 #+begin_src elisp :eval no
 :editor
@@ -99,7 +98,7 @@ snippets            ; my elves. They type so I don't have to
 ;;word-wrap         ; soft wrapping with language-aware indent
 #+end_src
 
-Emacs:
+*Emacs:*
 #+name: doom-emacs
 #+begin_src elisp :eval no
 :emacs
@@ -110,7 +109,7 @@ undo              ; persistent, smarter undo for your inevitable mistakes
 vc                ; version-control and Emacs, sitting in a tree
 #+end_src
 
-Term:
+*Term:*
 #+name: doom-term
 #+begin_src elisp :eval no
 :term
@@ -120,7 +119,7 @@ term                ; basic terminal emulator for Emacs
 ;;vterm             ; the best terminal emulation in Emacs
 #+end_src
 
-Checkers:
+*Checkers:*
 #+name: doom-checkers
 #+begin_src elisp :eval no
 :checkers
@@ -129,7 +128,7 @@ syntax              ; tasing you for every semicolon you forget
 ;;grammar           ; tasing grammar mistake every you make
 #+end_src
 
-Tools:
+*Tools:*
 #+name: doom-tools
 #+begin_src elisp :eval no
 :tools
@@ -155,7 +154,7 @@ make                ; run make tasks from Emacs
 ;;upload            ; map local to remote projects via ssh/ftp
 #+end_src
 
-OS:
+*OS:*
 #+name: doom-os
 #+begin_src elisp :eval no
 :os
@@ -163,7 +162,7 @@ OS:
 ;;tty               ; improve the terminal Emacs experience
 #+end_src
 
-Lang:
+*Lang:*
 #+name: doom-lang
 #+begin_src elisp :eval no
 :lang
@@ -207,7 +206,7 @@ yaml                ; JSON, but readable
 ;;zig               ; C, but simpler
 #+end_src
 
-Email:
+*Email:*
 #+name: doom-email
 #+begin_src elisp :eval no
 :email
@@ -216,7 +215,7 @@ Email:
 ;;(wanderlust +gmail)
 #+end_src
 
-App:
+*App:*
 #+name: doom-app
 #+begin_src elisp :eval no
 :app
@@ -228,7 +227,7 @@ App:
 ;;twitter           ; twitter client https://twitter.com/vnought
 #+end_src
 
-Config:
+*Config:*
 #+name: doom-config
 #+begin_src elisp :eval no
 :config
@@ -236,9 +235,9 @@ Config:
 (default +bindings +smartparens))
 #+end_src
 
-
+*Assemble the file:*
 #+begin_src elisp :noweb tangle :tangle ~/.doom.d/init.el :mkdirp yes :eval no
-;;; init.el -*- lexical-binding: t; -*-
+;;; init.el -*- lex ical-binding: t; -*-
 (doom!
        <<doom-input>>
 
@@ -266,15 +265,14 @@ Config:
 
        <<doom-config>>
 #+end_src
-**** config.el
-Personal config file for Doom to load:
+*** config.el
+*Config for Doom to load*
 
-Core editor settings:
+*Core editor settings:*
 #+name: core_settings
 #+begin_src elisp :eval no
 (setq user-full-name "sourceweaver"
       user-mail-address "sw.git@pm.me")
-
 
 (setq display-line-numbers-type t)
 (setq-default fill-column 120)
@@ -293,7 +291,7 @@ Core editor settings:
 ; ;(add-hook 'after-init-hook 'toggle-frame-fullscreen)
 #+end_src
 
-Theme and visual settings:
+*Theme and visual settings:*
 #+name: theme_settings
 #+begin_src elisp :eval no
 (setq doom-theme 'doom-miramare)
@@ -323,7 +321,7 @@ Theme and visual settings:
 
 #+end_src
 
-Org mode settings:
+*Org mode settings:*
 #+name: org_settings
 #+begin_src elisp :eval no
 ;; Completed items get timestamped:
@@ -343,7 +341,7 @@ Org mode settings:
 (setq org-footnote-auto-adjust t)
 #+end_src
 
-Crystal mode settings:
+*Crystal mode settings:*
 #+name: crystal_settings
 #+begin_src elisp :eval no
 ;; Register Crystalline as a language backend:
@@ -359,7 +357,7 @@ Crystal mode settings:
 ;;                     :server-id 'crystalline)))
 #+end_src
 
-Go mode settings:
+*Go mode settings:*
 #+name: go_settings
 #+begin_src elisp :eval no
 ;; Format with `goimports` instead of `gofmt`:
@@ -381,7 +379,7 @@ Go mode settings:
 ;;                            (setq flycheck-local-checkers '((lsp . ((next-checkers . (golangci-lint))))))))
 #+end_src
 
-Web mode settings:
+*Web mode settings:*
 #+name: web_settings
 #+begin_src elisp :eval no
 ;; Register extensions as web-mode targets:
@@ -394,13 +392,13 @@ Web mode settings:
       '(("erb" . "\\.ecr\\'")))
 #+end_src
 
-JS2 mode settings:
+*JS2 mode settings:*
 #+name: js2_settings
 #+begin_src elisp :eval no
 (setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
 #+end_src
 
-LSP mode settings:
+*LSP mode settings:*
 #+name: lsp_settings
 #+begin_src elisp :eval no
 ;; Lsp tries to render links on treemacs, destroying its functionality.
@@ -425,7 +423,7 @@ LSP mode settings:
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\node_modules\\'"))
 #+end_src
 
-Common Lisp mode settings:
+*Common Lisp mode settings:*
 #+name: lisp_settings
 #+begin_src elisp :eval no
 ;; Make sly open vertically instead of horizontally:
@@ -433,7 +431,7 @@ Common Lisp mode settings:
   (set-popup-rule! "^\\*sly-mrepl" :ignore t))
 #+end_src
 
-Treemacs settings:
+*Treemacs settings:*
 #+name: treemacs_settings
 #+begin_src elisp :eval no
 ;; Make treemacs display only the current project:
@@ -443,7 +441,8 @@ Treemacs settings:
 
 ;; Add missing icons for some extensions:
 ;; FIXME:
-;; Issue #1: The icons don't load unless you manually run doom/reload
+;; Issue #1: The icons don't load unless you manually run doom/reload.
+;; Issue #2: Alignments are a bit off compared to pre-configured icons.
 (treemacs-define-custom-icon (format "  %s"(all-the-icons-fileicon "crystal" :height .9 :width .9 :face 'all-the-icons-purple)) "cr")
 (treemacs-define-custom-icon (format "  %s"(all-the-icons-alltheicon "html5" :height .9 :width .9 :face 'all-the-icons-orange)) "ecr")
 (treemacs-define-custom-icon (format "  %s"(all-the-icons-fileicon "gnu" :height .9 :width .9 :face 'all-the-icons-silver)) "Makefile")
@@ -478,8 +477,8 @@ Treemacs settings:
         "*.parcel-cache"))
 #+end_src
 
-Custom keybinds:
-#+name: keybind_settings
+*Custom keymap:*:
+#+name: keymap_settings
 #+begin_src elisp :eval no
 (setq evil-escape-key-sequence "jj")
 
@@ -552,7 +551,7 @@ Custom keybinds:
       "t d" 'devdocs-lookup)
 #+end_src
 
-Company mode settings:
+*Company mode settings:*
 #+name: company_settings
 #+begin_src elisp :eval no
 ;; NOTE: Following lists are experimental. Extract the repeating code once you're certain
@@ -562,13 +561,14 @@ Company mode settings:
 (set-company-backend! 'org-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
 #+end_src
 
-Devdocs Settings:
+*Devdocs Settings:*
 #+name: devdocs_settings
 #+begin_src elisp :eval no
 (add-hook 'crystal-mode-hook
           (lambda () (setq-local devdocs-current-docs '("crystal"))))
 #+end_src
 
+*Assemble the file:*
 #+begin_src elisp :noweb tangle :tangle ~/.doom.d/config.el :mkdirp yes :eval no
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 <<core_settings>>
@@ -591,15 +591,15 @@ Devdocs Settings:
 
 <<treemacs_settings>>
 
-<<keybind_settings>>
+<<keymap_settings>>
 
 <<company_settings>>
 
 <<devdocs_settings>>
 #+end_src
-**** Snippets
-***** Crystal
-Comment result:
+*** Snippets
+**** Crystal
+*Comment result:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/crystal-mode/comment-result :mkdirp yes :eval no
 # -*- mode: snippet -*-
 # name: comment_result
@@ -607,8 +607,8 @@ Comment result:
 # --
 # => $1
 #+end_src
-***** Markdown
-Ruby code fence:
+**** Markdown
+*Ruby code fence:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/ruby-block :mkdirp yes :eval no
 # -*- mode: snippet -*-
 # name: ruby-block
@@ -619,7 +619,7 @@ $1
 \`\`\`
 #+end_src
 
-Crystal code fence:
+*Crystal code fence:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/crystal-block :mkdirp yes :eval no
 # -*- mode: snippet -*-
 # name: crystal-block
@@ -630,8 +630,7 @@ $1
 \`\`\`
 #+end_src
 
-
-README preamble:
+*README preamble:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/markdown-mode/readme-pre :mkdirp yes :eval no
 # -*- mode: snippet -*-
 # name: readme-pre
@@ -666,8 +665,8 @@ where development happens, and the GitHub repo is an official mirror.
 [1]: https://git.sr.ht/~sourceweaver/???
 [2]: https://github.com/sourceweaver/???
 #+end_src
-***** Org
-Crystal code block:
+**** Org
+*Crystal code block:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/org-mode/crystal-block :mkdirp yes :eval no
 # -*- mode: snippet -*-
 # name: crystal-src
@@ -677,27 +676,11 @@ Crystal code block:
 $1
 ,#+end_src
 #+end_src
-***** JSX
-Set state:
-#+begin_src snippet :tangle ~/.doom.d/snippets/rjsx-mode/set-state :mkdirp yes :eval no
-# -*- mode: snippet -*-
-# name: setState
-# key: /stst
-# --
-this.setState((prevState) => {
-    return {
-            $1: $2
-        }
-})
-#+end_src
+** zsh
+*** .zshrc
+*A simplified `.zshrc`*
 
-*** COMMENT Vim
-*** COMMENT Neovim
-** Shell & Terminals
-*** zsh
-A simplified `.zshrc` that I use.
-
-Core settings:
+*Core settings:*
 #+name: zsh_core_settings
 #+begin_src shell :eval no
 export ZSH="/home/itsme/.oh-my-zsh"
@@ -715,7 +698,7 @@ export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 #+end_src
 
-Path to tools:
+*Path to tools:*
 #+name: zsh_path
 #+begin_src shell :eval no
 # User binaries
@@ -750,7 +733,7 @@ export PATH=$HOME/local/ruby/bin:$PATH
 export PATH=$HOME/local/nvim/bin:$PATH
 #+end_src
 
-Some aliases:
+*Aliases:*
 #+name: zsh_alias
 #+begin_src shell :eval no
 # These aliases override zsh plugins.
@@ -773,7 +756,7 @@ alias top='htop'
 alias vim='nvim'
 #+end_src
 
-Some functions:
+*Functions:*
 #+name: zsh_functions
 #+begin_src shell :eval no
 # GIT
@@ -789,6 +772,7 @@ cpu_mode()      { cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor     
 spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 #+end_src
 
+*Assemble the file:*
 #+begin_src shell :noweb tangle :tangle ~/.zshrc
 <<zsh_core_settings>>
 
@@ -798,7 +782,8 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 
 <<zsh_functions>>
 #+end_src
-*** Alacritty
+
+** Alacritty
 My Alacritty config:
 
 Window & Scrolling:
@@ -888,10 +873,7 @@ key_bindings:
 <<alacritty_colors>>
 <<alacritty_misc>>
 #+end_src
-** COMMENT Window Managers
-*** i3
-** Other Tools
-*** Git
+** Git
 My baseline Git config:
 #+begin_src conf :tangle ~/.gitconfig :eval no
 [filter "lfs"]
@@ -928,4 +910,5 @@ Subject line (try to keep under 60 characters)
 # feel free to be detailed.
 Signed-off-by: sourceweaver <sw.git@pm.me>
 #+end_src
-*** COMMENT SSH
+** COMMENT Neovim
+** COMMENT i3
