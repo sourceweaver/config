@@ -1,30 +1,30 @@
-- [Config](#orgb10743a)
-  - [Usage](#orgd75d4fe)
-    - [Export to Markdown/HTML/PDF](#org1e070bf)
-    - [Tangle Config](#orgb6de733)
-  - [Emacs](#org4ff2398)
-    - [packages.el](#orgc4489ec)
-    - [init.el](#orgff20375)
-    - [config.el](#org3b8c763)
-    - [Snippets](#org5d5111f)
-  - [zsh](#org13ef2b7)
-    - [.zshrc](#org57e0adf)
-  - [Alacritty](#orgfe4f68e)
-  - [Git](#org862beaf)
+- [Config](#org730fd15)
+  - [Usage](#orga1c7155)
+    - [Export to Markdown/HTML/PDF](#org037df99)
+    - [Tangle Config](#org623b9b2)
+  - [Emacs](#orgdd2844b)
+    - [packages.el](#org919b71d)
+    - [init.el](#orgb8eeb70)
+    - [config.el](#org58a55e5)
+    - [Snippets](#orga6f7a6b)
+  - [zsh](#org2bbaf77)
+    - [.zshrc](#orgdab90e5)
+  - [Alacritty](#orgddc2ba3)
+  - [Git](#org509691e)
 
 
 
-<a id="orgb10743a"></a>
+<a id="org730fd15"></a>
 
 # Config
 
 
-<a id="orgd75d4fe"></a>
+<a id="orga1c7155"></a>
 
 ## Usage
 
 
-<a id="org1e070bf"></a>
+<a id="org037df99"></a>
 
 ### Export to Markdown/HTML/PDF
 
@@ -34,19 +34,19 @@ For a literate reading you can export this file as Markdown/HTML/PDF etc. Some e
 -   HTML: `org-html-export-to-html`
 
 
-<a id="orgb6de733"></a>
+<a id="org623b9b2"></a>
 
 ### Tangle Config
 
 Each code block that is meant to be tangled will have their destination in their respective headers. All you need to do is to run `org-babel-tangle`. Do not run this if you&rsquo;re just browsing this repository, it will create (or overwrite) my config files to your system.
 
 
-<a id="org4ff2398"></a>
+<a id="orgdd2844b"></a>
 
 ## Emacs
 
 
-<a id="orgc4489ec"></a>
+<a id="org919b71d"></a>
 
 ### packages.el
 
@@ -71,7 +71,7 @@ Each code block that is meant to be tangled will have their destination in their
 ```
 
 
-<a id="orgff20375"></a>
+<a id="orgb8eeb70"></a>
 
 ### init.el
 
@@ -315,7 +315,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org3b8c763"></a>
+<a id="org58a55e5"></a>
 
 ### config.el
 
@@ -653,7 +653,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org5d5111f"></a>
+<a id="orga6f7a6b"></a>
 
 ### Snippets
 
@@ -747,12 +747,12 @@ yaml                ; JSON, but readable
     ```
 
 
-<a id="org13ef2b7"></a>
+<a id="org2bbaf77"></a>
 
 ## zsh
 
 
-<a id="org57e0adf"></a>
+<a id="orgdab90e5"></a>
 
 ### .zshrc
 
@@ -863,13 +863,13 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 ```
 
 
-<a id="orgfe4f68e"></a>
+<a id="orgddc2ba3"></a>
 
 ## Alacritty
 
-My Alacritty config:
+**Alacritty config:**
 
-Window & Scrolling:
+**Window & Scrolling:**
 
 ```yaml
 window:
@@ -887,7 +887,7 @@ scrolling:
   multiplier: 3
 ```
 
-Font & Typography:
+**Font & Typography:**
 
 ```yaml
 font:
@@ -904,7 +904,7 @@ font:
 draw_bold_text_with_bright_colors: true
 ```
 
-Colors:
+**Colors:**
 
 ```yaml
 colors:
@@ -938,7 +938,7 @@ colors:
     white:   '0xebdbb2'
 ```
 
-Misc & Keybinds:
+**Misc & Keybinds:**
 
 ```yaml
 selection:
@@ -958,11 +958,11 @@ key_bindings:
 ```
 
 
-<a id="org862beaf"></a>
+<a id="org509691e"></a>
 
 ## Git
 
-My baseline Git config:
+**Baseline Git config:**
 
 ```conf
 [filter "lfs"]
@@ -991,7 +991,7 @@ My baseline Git config:
 
 ```
 
-My Git commit message template:
+**Git commit message template:**
 
 ```conf
 Subject line (try to keep under 60 characters)

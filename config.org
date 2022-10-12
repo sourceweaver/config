@@ -794,9 +794,9 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 #+end_src
 
 ** Alacritty
-My Alacritty config:
+*Alacritty config:*
 
-Window & Scrolling:
+*Window & Scrolling:*
 #+name: alacritty_core
 #+begin_src yaml :eval no
 window:
@@ -814,7 +814,7 @@ scrolling:
   multiplier: 3
 #+end_src
 
-Font & Typography:
+*Font & Typography:*
 #+name: alacritty_typography
 #+begin_src yaml :eval no
 font:
@@ -831,7 +831,7 @@ font:
 draw_bold_text_with_bright_colors: true
 #+end_src
 
-Colors:
+*Colors:*
 #+name: alacritty_colors
 #+begin_src yaml :eval no
 colors:
@@ -865,7 +865,7 @@ colors:
     white:   '0xebdbb2'
 #+end_src
 
-Misc & Keybinds:
+*Misc & Keybinds:*
 #+name: alacritty_misc
 #+begin_src yaml :eval no
 selection:
@@ -884,7 +884,7 @@ key_bindings:
 <<alacritty_misc>>
 #+end_src
 ** Git
-My baseline Git config:
+*Baseline Git config:*
 #+begin_src conf :tangle ~/.gitconfig :eval no
 [filter "lfs"]
     clean    = git-lfs clean -- %f
@@ -912,7 +912,7 @@ My baseline Git config:
 
 #+end_src
 
-My Git commit message template:
+*Git commit message template:*
 #+begin_src conf :tangle ~/.gitmessage :eval no
 Subject line (try to keep under 60 characters)
 
