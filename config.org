@@ -8,6 +8,15 @@
 #+property: header-args:yaml :exports code
 #+STARTUP: overview
 * My Personal Config
+** Usage
+*** Export to Markdown/HTML/PDF
+For a literate reading you can export this file as Markdown/HTML/PDF etc. Some examples:
++ GitHub Flavored Markdown: =org-gfm-export-to-markdown=
++ HTML: =org-html-export-to-html=
+*** Tangle Config
+Each code block that is meant to be tangled will have their destination in their respective headers. All you
+need to do is to run =org-babel-tangle=. Do not run this if you're just browsing this repository, it will
+create (or overwrite) my config files to your system.
 ** Emacs
 *** packages.el
 *These are the packages that I grab from MELPA*
