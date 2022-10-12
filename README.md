@@ -1,30 +1,30 @@
-- [My Personal Config](#orgab17014)
-  - [Usage](#org5d9d3f6)
-    - [Export to Markdown/HTML/PDF](#orgdd8ee29)
-    - [Tangle Config](#org0c71ee9)
-  - [Emacs](#org1dc09b7)
-    - [packages.el](#org4a0feec)
-    - [init.el](#org5383b43)
-    - [config.el](#orgfebc35c)
-    - [Snippets](#org1304417)
-  - [zsh](#orgd3667d7)
-    - [.zshrc](#org952a492)
-  - [Alacritty](#orgad61151)
-  - [Git](#org4453a92)
+- [Config](#orgb10743a)
+  - [Usage](#orgd75d4fe)
+    - [Export to Markdown/HTML/PDF](#org1e070bf)
+    - [Tangle Config](#orgb6de733)
+  - [Emacs](#org4ff2398)
+    - [packages.el](#orgc4489ec)
+    - [init.el](#orgff20375)
+    - [config.el](#org3b8c763)
+    - [Snippets](#org5d5111f)
+  - [zsh](#org13ef2b7)
+    - [.zshrc](#org57e0adf)
+  - [Alacritty](#orgfe4f68e)
+  - [Git](#org862beaf)
 
 
 
-<a id="orgab17014"></a>
+<a id="orgb10743a"></a>
 
-# My Personal Config
+# Config
 
 
-<a id="org5d9d3f6"></a>
+<a id="orgd75d4fe"></a>
 
 ## Usage
 
 
-<a id="orgdd8ee29"></a>
+<a id="org1e070bf"></a>
 
 ### Export to Markdown/HTML/PDF
 
@@ -34,19 +34,19 @@ For a literate reading you can export this file as Markdown/HTML/PDF etc. Some e
 -   HTML: `org-html-export-to-html`
 
 
-<a id="org0c71ee9"></a>
+<a id="orgb6de733"></a>
 
 ### Tangle Config
 
 Each code block that is meant to be tangled will have their destination in their respective headers. All you need to do is to run `org-babel-tangle`. Do not run this if you&rsquo;re just browsing this repository, it will create (or overwrite) my config files to your system.
 
 
-<a id="org1dc09b7"></a>
+<a id="org4ff2398"></a>
 
 ## Emacs
 
 
-<a id="org4a0feec"></a>
+<a id="orgc4489ec"></a>
 
 ### packages.el
 
@@ -71,7 +71,7 @@ Each code block that is meant to be tangled will have their destination in their
 ```
 
 
-<a id="org5383b43"></a>
+<a id="orgff20375"></a>
 
 ### init.el
 
@@ -278,7 +278,7 @@ yaml                ; JSON, but readable
 ```elisp
 :config
 ;;literate
-(default +bindings +smartparens))
+(default +bindings +smartparens)
 ```
 
 **Assemble the file:**
@@ -311,10 +311,11 @@ yaml                ; JSON, but readable
        <<doom-app>>
 
        <<doom-config>>
+)
 ```
 
 
-<a id="orgfebc35c"></a>
+<a id="org3b8c763"></a>
 
 ### config.el
 
@@ -652,7 +653,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org1304417"></a>
+<a id="org5d5111f"></a>
 
 ### Snippets
 
@@ -746,12 +747,12 @@ yaml                ; JSON, but readable
     ```
 
 
-<a id="orgd3667d7"></a>
+<a id="org13ef2b7"></a>
 
 ## zsh
 
 
-<a id="org952a492"></a>
+<a id="org57e0adf"></a>
 
 ### .zshrc
 
@@ -862,7 +863,7 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 ```
 
 
-<a id="orgad61151"></a>
+<a id="orgfe4f68e"></a>
 
 ## Alacritty
 
@@ -957,7 +958,7 @@ key_bindings:
 ```
 
 
-<a id="org4453a92"></a>
+<a id="org862beaf"></a>
 
 ## Git
 
