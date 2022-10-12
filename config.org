@@ -7,7 +7,7 @@
 #+property: header-args:snippet :exports code
 #+property: header-args:yaml :exports code
 #+STARTUP: overview
-* My Personal Config
+* Config
 ** Usage
 *** Export to Markdown/HTML/PDF
 For a literate reading you can export this file as Markdown/HTML/PDF etc. Some examples:
@@ -241,7 +241,7 @@ yaml                ; JSON, but readable
 #+begin_src elisp :eval no
 :config
 ;;literate
-(default +bindings +smartparens))
+(default +bindings +smartparens)
 #+end_src
 
 *Assemble the file:*
@@ -273,6 +273,7 @@ yaml                ; JSON, but readable
        <<doom-app>>
 
        <<doom-config>>
+)
 #+end_src
 *** config.el
 *Config for Doom to load*
