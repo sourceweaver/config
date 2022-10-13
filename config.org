@@ -733,7 +733,7 @@ NODE_DISTRO='linux-x64'
 export PATH=$HOME/local/node-$NODE_VERSION-$NODE_DISTRO/bin:$PATH
 
 # Crystal:
-CRYSTAL_COMPILER='1.5.0-llvm14-glibc'
+CRYSTAL_COMPILER='1.6.0-1-llvm14-glibc'
 export PATH=$HOME/local/crystal-$CRYSTAL_COMPILER/bin:$PATH
 
 # Ruby:
@@ -803,8 +803,8 @@ window:
   decorations: none
   opacity: 0.9
   padding:
-    x: 5
-    y: 5
+    x: 2
+    y: 2
   class:
     instance: Alacritty
     general: Alacritty

@@ -1,30 +1,30 @@
-- [Config](#org730fd15)
-  - [Usage](#orga1c7155)
-    - [Export to Markdown/HTML/PDF](#org037df99)
-    - [Tangle Config](#org623b9b2)
-  - [Emacs](#orgdd2844b)
-    - [packages.el](#org919b71d)
-    - [init.el](#orgb8eeb70)
-    - [config.el](#org58a55e5)
-    - [Snippets](#orga6f7a6b)
-  - [zsh](#org2bbaf77)
-    - [.zshrc](#orgdab90e5)
-  - [Alacritty](#orgddc2ba3)
-  - [Git](#org509691e)
+- [Config](#orge8c4af8)
+  - [Usage](#orgce189cf)
+    - [Export to Markdown/HTML/PDF](#org87f369b)
+    - [Tangle Config](#org9f7b6f3)
+  - [Emacs](#org5dcd421)
+    - [packages.el](#org9e07870)
+    - [init.el](#org5761286)
+    - [config.el](#orge4fd715)
+    - [Snippets](#org9dfa35c)
+  - [zsh](#orga365ea4)
+    - [.zshrc](#orgbf5c13f)
+  - [Alacritty](#org20e57dc)
+  - [Git](#org06336b7)
 
 
 
-<a id="org730fd15"></a>
+<a id="orge8c4af8"></a>
 
 # Config
 
 
-<a id="orga1c7155"></a>
+<a id="orgce189cf"></a>
 
 ## Usage
 
 
-<a id="org037df99"></a>
+<a id="org87f369b"></a>
 
 ### Export to Markdown/HTML/PDF
 
@@ -34,19 +34,19 @@ For a literate reading you can export this file as Markdown/HTML/PDF etc. Some e
 -   HTML: `org-html-export-to-html`
 
 
-<a id="org623b9b2"></a>
+<a id="org9f7b6f3"></a>
 
 ### Tangle Config
 
 Each code block that is meant to be tangled will have their destination in their respective headers. All you need to do is to run `org-babel-tangle`. Do not run this if you&rsquo;re just browsing this repository, it will create (or overwrite) my config files to your system.
 
 
-<a id="orgdd2844b"></a>
+<a id="org5dcd421"></a>
 
 ## Emacs
 
 
-<a id="org919b71d"></a>
+<a id="org9e07870"></a>
 
 ### packages.el
 
@@ -71,7 +71,7 @@ Each code block that is meant to be tangled will have their destination in their
 ```
 
 
-<a id="orgb8eeb70"></a>
+<a id="org5761286"></a>
 
 ### init.el
 
@@ -315,7 +315,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org58a55e5"></a>
+<a id="orge4fd715"></a>
 
 ### config.el
 
@@ -653,7 +653,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="orga6f7a6b"></a>
+<a id="org9dfa35c"></a>
 
 ### Snippets
 
@@ -747,12 +747,12 @@ yaml                ; JSON, but readable
     ```
 
 
-<a id="org2bbaf77"></a>
+<a id="orga365ea4"></a>
 
 ## zsh
 
 
-<a id="orgdab90e5"></a>
+<a id="orgbf5c13f"></a>
 
 ### .zshrc
 
@@ -801,7 +801,7 @@ NODE_DISTRO='linux-x64'
 export PATH=$HOME/local/node-$NODE_VERSION-$NODE_DISTRO/bin:$PATH
 
 # Crystal:
-CRYSTAL_COMPILER='1.5.0-llvm14-glibc'
+CRYSTAL_COMPILER='1.6.0-1-llvm14-glibc'
 export PATH=$HOME/local/crystal-$CRYSTAL_COMPILER/bin:$PATH
 
 # Ruby:
@@ -863,7 +863,7 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 ```
 
 
-<a id="orgddc2ba3"></a>
+<a id="org20e57dc"></a>
 
 ## Alacritty
 
@@ -876,8 +876,8 @@ window:
   decorations: none
   opacity: 0.9
   padding:
-    x: 5
-    y: 5
+    x: 2
+    y: 2
   class:
     instance: Alacritty
     general: Alacritty
@@ -958,7 +958,7 @@ key_bindings:
 ```
 
 
-<a id="org509691e"></a>
+<a id="org06336b7"></a>
 
 ## Git
 
