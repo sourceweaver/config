@@ -31,6 +31,9 @@ create (or overwrite) my config files to your system.
 ;; GitHub Flavored Markdown export from org-mode
 (package! ox-gfm)
 
+;; CoffeeScript
+(package! coffee-mode)
+
 ;; Dash in Emacs (Unmaintained)
 ;; (package! helm-dash)
 
