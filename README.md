@@ -1,30 +1,30 @@
-- [Config](#orge8c4af8)
-  - [Usage](#orgce189cf)
-    - [Export to Markdown/HTML/PDF](#org87f369b)
-    - [Tangle Config](#org9f7b6f3)
-  - [Emacs](#org5dcd421)
-    - [packages.el](#org9e07870)
-    - [init.el](#org5761286)
-    - [config.el](#orge4fd715)
-    - [Snippets](#org9dfa35c)
-  - [zsh](#orga365ea4)
-    - [.zshrc](#orgbf5c13f)
-  - [Alacritty](#org20e57dc)
-  - [Git](#org06336b7)
+- [Config](#org5049d30)
+  - [Usage](#org4277437)
+    - [Export to Markdown/HTML/PDF](#orga0e8a2a)
+    - [Tangle Config](#org4797c26)
+  - [Emacs](#org815b40b)
+    - [packages.el](#org46054f7)
+    - [init.el](#orgf1ad4b1)
+    - [config.el](#orgf1d0840)
+    - [Snippets](#org945e96a)
+  - [zsh](#orgff66b5f)
+    - [.zshrc](#org2111d1b)
+  - [Alacritty](#org9c961fc)
+  - [Git](#org20eb373)
 
 
 
-<a id="orge8c4af8"></a>
+<a id="org5049d30"></a>
 
 # Config
 
 
-<a id="orgce189cf"></a>
+<a id="org4277437"></a>
 
 ## Usage
 
 
-<a id="org87f369b"></a>
+<a id="orga0e8a2a"></a>
 
 ### Export to Markdown/HTML/PDF
 
@@ -34,19 +34,19 @@ For a literate reading you can export this file as Markdown/HTML/PDF etc. Some e
 -   HTML: `org-html-export-to-html`
 
 
-<a id="org9f7b6f3"></a>
+<a id="org4797c26"></a>
 
 ### Tangle Config
 
 Each code block that is meant to be tangled will have their destination in their respective headers. All you need to do is to run `org-babel-tangle`. Do not run this if you&rsquo;re just browsing this repository, it will create (or overwrite) my config files to your system.
 
 
-<a id="org5dcd421"></a>
+<a id="org815b40b"></a>
 
 ## Emacs
 
 
-<a id="org9e07870"></a>
+<a id="org46054f7"></a>
 
 ### packages.el
 
@@ -63,6 +63,9 @@ Each code block that is meant to be tangled will have their destination in their
 ;; GitHub Flavored Markdown export from org-mode
 (package! ox-gfm)
 
+;; CoffeeScript
+(package! coffee-mode)
+
 ;; Dash in Emacs (Unmaintained)
 ;; (package! helm-dash)
 
@@ -71,7 +74,7 @@ Each code block that is meant to be tangled will have their destination in their
 ```
 
 
-<a id="org5761286"></a>
+<a id="orgf1ad4b1"></a>
 
 ### init.el
 
@@ -243,7 +246,7 @@ org                 ; organize your plain life in plain text
 ;;racket            ; a DSL for DSLs
 ;;rest              ; Emacs as a REST client
 ;;rst               ; ReST in peace
-;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+ruby ;;(+rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
 ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
 ;;(scheme +guile)   ; a fully conniving family of lisps
 sh                  ; she sells {ba,z,fi}sh shells on the C xor
@@ -315,7 +318,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="orge4fd715"></a>
+<a id="orgf1d0840"></a>
 
 ### config.el
 
@@ -609,8 +612,14 @@ yaml                ; JSON, but readable
 ```elisp
 ;; NOTE: Following lists are experimental. Extract the repeating code once you're certain
 ;; with the order of things:
+
+;; Ruby:
 (set-company-backend! 'ruby-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+
+;; Crystal:
 (set-company-backend! 'crystal-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+
+;; Org-mode:
 (set-company-backend! 'org-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
 ```
 
@@ -653,7 +662,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org9dfa35c"></a>
+<a id="org945e96a"></a>
 
 ### Snippets
 
@@ -747,12 +756,12 @@ yaml                ; JSON, but readable
     ```
 
 
-<a id="orga365ea4"></a>
+<a id="orgff66b5f"></a>
 
 ## zsh
 
 
-<a id="orgbf5c13f"></a>
+<a id="org2111d1b"></a>
 
 ### .zshrc
 
@@ -792,8 +801,9 @@ export GOBIN=$HOME/local/go/bin
 export PATH=$GOBIN:$PATH
 export GO111MODULE=on
 
-# Java:
-#export PATH=$HOME/local/graalvm-ce-java17-22.0.0.2/bin:$PATH
+# GraalVM [Java]:
+# To install other components run `gu available` and then e.g. `gu install ruby`
+export PATH=$HOME/local/graalvm-ce-java17-22.2.0/bin:$PATH
 
 # Node.js:
 NODE_VERSION='v16.14.2'
@@ -846,8 +856,20 @@ cpu_perf_mode() { echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufr
 cpu_eco_mode()  { echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor   } # Set Power Save
 cpu_mode()      { cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor                         } # Set Perf
 
-# EDITORCONFIG
+# GENERATORS
 spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
+spawn_ruby() {
+    if [[ $# -eq 0 ]] ; then
+        cat <<EOF
+No project name provided
+Usage:
+spawn_ruby mandelbrot
+EOF
+        return 1
+    fi
+
+    cp -R ~/dev/templates/ruby $PWD/$1
+}
 ```
 
 **Assemble the file:**
@@ -863,7 +885,7 @@ spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
 ```
 
 
-<a id="org20e57dc"></a>
+<a id="org9c961fc"></a>
 
 ## Alacritty
 
@@ -958,7 +980,7 @@ key_bindings:
 ```
 
 
-<a id="org06336b7"></a>
+<a id="org20eb373"></a>
 
 ## Git
 
