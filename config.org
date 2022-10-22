@@ -209,7 +209,7 @@ org                 ; organize your plain life in plain text
 ;;racket            ; a DSL for DSLs
 ;;rest              ; Emacs as a REST client
 ;;rst               ; ReST in peace
-;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+ruby ;;(+rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
 ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
 ;;(scheme +guile)   ; a fully conniving family of lisps
 sh                  ; she sells {ba,z,fi}sh shells on the C xor
@@ -569,8 +569,14 @@ yaml                ; JSON, but readable
 #+begin_src elisp :eval no
 ;; NOTE: Following lists are experimental. Extract the repeating code once you're certain
 ;; with the order of things:
+
+;; Ruby:
 (set-company-backend! 'ruby-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+
+;; Crystal:
 (set-company-backend! 'crystal-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
+
+;; Org-mode:
 (set-company-backend! 'org-mode 'company-dabbrev 'company-keywords 'company-semantic 'company-etags 'company-files 'company-yasnippet 'company-capf)
 #+end_src
 
@@ -580,6 +586,7 @@ yaml                ; JSON, but readable
 (add-hook 'crystal-mode-hook
           (lambda () (setq-local devdocs-current-docs '("crystal"))))
 #+end_src
+
 
 *Assemble the file:*
 #+begin_src elisp :noweb tangle :tangle ~/.doom.d/config.el :mkdirp yes :eval no
@@ -727,8 +734,9 @@ export GOBIN=$HOME/local/go/bin
 export PATH=$GOBIN:$PATH
 export GO111MODULE=on
 
-# Java:
-#export PATH=$HOME/local/graalvm-ce-java17-22.0.0.2/bin:$PATH
+# GraalVM [Java]:
+# To install other components run `gu available` and then e.g. `gu install ruby`
+export PATH=$HOME/local/graalvm-ce-java17-22.2.0/bin:$PATH
 
 # Node.js:
 NODE_VERSION='v16.14.2'
@@ -781,8 +789,20 @@ cpu_perf_mode() { echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufr
 cpu_eco_mode()  { echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor   } # Set Power Save
 cpu_mode()      { cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor                         } # Set Perf
 
-# EDITORCONFIG
+# GENERATORS
 spawn_editorconfig() { cp ~/dev/conf/editor_config/.editorconfig $PWD }
+spawn_ruby() {
+    if [[ $# -eq 0 ]] ; then
+        cat <<EOF
+No project name provided
+Usage:
+spawn_ruby mandelbrot
+EOF
+        return 1
+    fi
+
+    cp -R ~/dev/templates/ruby $PWD/$1
+}
 #+end_src
 
 *Assemble the file:*
