@@ -1,30 +1,30 @@
-- [Config](#org5049d30)
-  - [Usage](#org4277437)
-    - [Export to Markdown/HTML/PDF](#orga0e8a2a)
-    - [Tangle Config](#org4797c26)
-  - [Emacs](#org815b40b)
-    - [packages.el](#org46054f7)
-    - [init.el](#orgf1ad4b1)
-    - [config.el](#orgf1d0840)
-    - [Snippets](#org945e96a)
-  - [zsh](#orgff66b5f)
-    - [.zshrc](#org2111d1b)
-  - [Alacritty](#org9c961fc)
-  - [Git](#org20eb373)
+- [Config](#org5484262)
+  - [Usage](#orgaa9305b)
+    - [Export to Markdown/HTML/PDF](#orgb14caf7)
+    - [Tangle Config](#org60de5e5)
+  - [Emacs](#orgf50d29c)
+    - [packages.el](#orgda69922)
+    - [init.el](#org681e427)
+    - [config.el](#org6e285d7)
+    - [Snippets](#orgd890538)
+  - [zsh](#orga89aa7e)
+    - [.zshrc](#org9e4d340)
+  - [Alacritty](#orgef6e7ba)
+  - [Git](#org22c4229)
 
 
 
-<a id="org5049d30"></a>
+<a id="org5484262"></a>
 
 # Config
 
 
-<a id="org4277437"></a>
+<a id="orgaa9305b"></a>
 
 ## Usage
 
 
-<a id="orga0e8a2a"></a>
+<a id="orgb14caf7"></a>
 
 ### Export to Markdown/HTML/PDF
 
@@ -34,19 +34,19 @@ For a literate reading you can export this file as Markdown/HTML/PDF etc. Some e
 -   HTML: `org-html-export-to-html`
 
 
-<a id="org4797c26"></a>
+<a id="org60de5e5"></a>
 
 ### Tangle Config
 
 Each code block that is meant to be tangled will have their destination in their respective headers. All you need to do is to run `org-babel-tangle`. Do not run this if you&rsquo;re just browsing this repository, it will create (or overwrite) my config files to your system.
 
 
-<a id="org815b40b"></a>
+<a id="orgf50d29c"></a>
 
 ## Emacs
 
 
-<a id="org46054f7"></a>
+<a id="orgda69922"></a>
 
 ### packages.el
 
@@ -74,7 +74,7 @@ Each code block that is meant to be tangled will have their destination in their
 ```
 
 
-<a id="orgf1ad4b1"></a>
+<a id="org681e427"></a>
 
 ### init.el
 
@@ -218,7 +218,7 @@ make                ; run make tasks from Emacs
 ;;cc                ; C > C++ == 1
 ;;clojure           ; java with a lisp
 common-lisp         ; if you've seen one lisp, you've seen them all
-crystal ;(+lsp)     ; ruby at the speed of c
+crystal             ; (+lsp) ; ruby at the speed of c
 ;;data              ; config/data formats
 ;;elixir            ; erlang done right
 ;;elm               ; care for a cup of TEA?
@@ -246,7 +246,7 @@ org                 ; organize your plain life in plain text
 ;;racket            ; a DSL for DSLs
 ;;rest              ; Emacs as a REST client
 ;;rst               ; ReST in peace
-ruby ;;(+rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+(ruby +lsp)         ; (+rails) ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
 ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
 ;;(scheme +guile)   ; a fully conniving family of lisps
 sh                  ; she sells {ba,z,fi}sh shells on the C xor
@@ -318,7 +318,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="orgf1d0840"></a>
+<a id="org6e285d7"></a>
 
 ### config.el
 
@@ -390,8 +390,9 @@ yaml                ; JSON, but readable
 ;; Load languages for org-babel:
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((crystal .t)
-   (js .t)))
+ '((crystal . t)
+   (ruby . t)
+   (js . t)))
 
 ;; Number and order footnotes:
 (setq org-footnote-auto-adjust t)
@@ -662,7 +663,7 @@ yaml                ; JSON, but readable
 ```
 
 
-<a id="org945e96a"></a>
+<a id="orgd890538"></a>
 
 ### Snippets
 
@@ -756,12 +757,12 @@ yaml                ; JSON, but readable
     ```
 
 
-<a id="orgff66b5f"></a>
+<a id="orga89aa7e"></a>
 
 ## zsh
 
 
-<a id="org2111d1b"></a>
+<a id="org9e4d340"></a>
 
 ### .zshrc
 
@@ -885,7 +886,7 @@ EOF
 ```
 
 
-<a id="org9c961fc"></a>
+<a id="orgef6e7ba"></a>
 
 ## Alacritty
 
@@ -980,7 +981,7 @@ key_bindings:
 ```
 
 
-<a id="org20eb373"></a>
+<a id="org22c4229"></a>
 
 ## Git
 

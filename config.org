@@ -181,7 +181,7 @@ make                ; run make tasks from Emacs
 ;;cc                ; C > C++ == 1
 ;;clojure           ; java with a lisp
 common-lisp         ; if you've seen one lisp, you've seen them all
-crystal ;(+lsp)     ; ruby at the speed of c
+crystal             ; (+lsp) ; ruby at the speed of c
 ;;data              ; config/data formats
 ;;elixir            ; erlang done right
 ;;elm               ; care for a cup of TEA?
@@ -209,7 +209,7 @@ org                 ; organize your plain life in plain text
 ;;racket            ; a DSL for DSLs
 ;;rest              ; Emacs as a REST client
 ;;rst               ; ReST in peace
-ruby ;;(+rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+(ruby +lsp)         ; (+rails) ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
 ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
 ;;(scheme +guile)   ; a fully conniving family of lisps
 sh                  ; she sells {ba,z,fi}sh shells on the C xor
@@ -347,8 +347,9 @@ yaml                ; JSON, but readable
 ;; Load languages for org-babel:
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((crystal .t)
-   (js .t)))
+ '((crystal . t)
+   (ruby . t)
+   (js . t)))
 
 ;; Number and order footnotes:
 (setq org-footnote-auto-adjust t)
