@@ -34,6 +34,9 @@ create (or overwrite) my config files to your system.
 ;; CoffeeScript
 (package! coffee-mode)
 
+;; BNF
+(package! bnf-mode)
+
 ;; Dash in Emacs (Unmaintained)
 ;; (package! helm-dash)
 
@@ -251,32 +254,32 @@ yaml                ; JSON, but readable
 #+begin_src elisp :noweb tangle :tangle ~/.doom.d/init.el :mkdirp yes :eval no
 ;;; init.el -*- lex ical-binding: t; -*-
 (doom!
-       <<doom-input>>
+ <<doom-input>>
 
-       <<doom-completion>>
+ <<doom-completion>>
 
-       <<doom-ui>>
+ <<doom-ui>>
 
-       <<doom-editor>>
+ <<doom-editor>>
 
-       <<doom-emacs>>
+ <<doom-emacs>>
 
-       <<doom-term>>
+ <<doom-term>>
 
-       <<doom-checkers>>
+ <<doom-checkers>>
 
-       <<doom-tools>>
+ <<doom-tools>>
 
-       <<doom-os>>
+ <<doom-os>>
 
-       <<doom-lang>>
+ <<doom-lang>>
 
-       <<doom-email>>
+ <<doom-email>>
 
-       <<doom-app>>
+ <<doom-app>>
 
-       <<doom-config>>
-)
+ <<doom-config>>
+ )
 #+end_src
 *** config.el
 *Config for Doom to load*
@@ -301,16 +304,16 @@ yaml                ; JSON, but readable
 ;; (global-whitespace-mode +1)
 
 ;; Start emacs fullscreen:
-; ;(add-hook 'after-init-hook 'toggle-frame-fullscreen)
+                                        ; ;(add-hook 'after-init-hook 'toggle-frame-fullscreen)
 #+end_src
 
 *Theme and visual settings:*
 #+name: theme_settings
 #+begin_src elisp :eval no
-(setq doom-theme 'doom-miramare)
+(setq doom-theme 'doom-xcode)
 
 ;; Other themes that I like:
-;; (setq doom-theme 'doom-xcode)
+;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-monokai-octagon)
 ;; (setq doom-theme 'doom-gruvbox)
 
@@ -508,10 +511,6 @@ yaml                ; JSON, but readable
       :desc "toggle documentation"
       "t k" 'lsp-ui-doc-glance)
 
-(map! :leader
-      :desc "comment line"
-      "l c" 'comment-line)
-
 (map! :after go-mode
       :map go-mode-map
       :leader
@@ -523,6 +522,29 @@ yaml                ; JSON, but readable
       :leader
       :desc "crystal format"
       "m f" 'crystal-tool-format)
+
+(map! :after ruby-mode
+      :map ruby-mode-map
+      :leader
+      :desc "rubocop format"
+      "m f" 'rubocop-format-current-file)
+
+(map! :after ruby-mode
+      :map ruby-mode-map
+      :leader
+      :desc "rubocop autocorrect"
+      "m F" 'rubocop-autocorrect-current-file)
+
+(map! :after ruby-mode
+      :map ruby-mode-map
+      :leader
+      :desc "fire ruby repl (pry)"
+      "m '" 'inf-ruby-console-default)
+
+(map! :after ruby-mode
+      :map ruby-mode-map
+      :desc "send buffer to repl(pry) and go"
+      "C-c C-c" 'ruby-send-buffer-and-go)
 
 (map! :after go-mode
       :map go-mode-map
@@ -620,6 +642,20 @@ yaml                ; JSON, but readable
 #+end_src
 *** Snippets
 **** Crystal
+*License*
+#+begin_src snippet :tangle ~/.doom.d/snippets/crystal-mode/license :mkdirp yes :eval no
+# -*- mode: snippet -*-
+# name: license_header
+# key: /license-header
+# --
+#+------------------------------------------------------------------------+#
+#| Copyright © 2022 sourceweaver                                          |#
+#| Licensed under the Mozilla Public License, Version 2.0 (the "License").|#
+#| You may not use this file except in compliance with the License. You   |#
+#| may obtain a copy of the License at http://mozilla.org/MPL/2.0/        |#
+#+------------------------------------------------------------------------+#
+#+end_src
+
 *Comment result:*
 #+begin_src snippet :tangle ~/.doom.d/snippets/crystal-mode/comment-result :mkdirp yes :eval no
 # -*- mode: snippet -*-
@@ -710,7 +746,13 @@ ZSH_THEME="lambda"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd/mm/yyyy"
 
-plugins=()
+plugins=(
+    # For autocompletion & syntax ighlighting to work, clone
+    # zsh-users/zsh-syntax-highlighting and zsh-users/zsh-autosuggestions
+    # repos to your ${ZSH_CUSTOM} direcotry.
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -748,11 +790,14 @@ export PATH=$HOME/local/node-$NODE_VERSION-$NODE_DISTRO/bin:$PATH
 CRYSTAL_COMPILER='1.6.0-1-llvm14-glibc'
 export PATH=$HOME/local/crystal-$CRYSTAL_COMPILER/bin:$PATH
 
+# D
+export PATH=$HOME/local/dmd2/linux/bin64:$PATH
+
 # Ruby:
 export PATH=$HOME/local/ruby/bin:$PATH
 
 # Nvim:
-export PATH=$HOME/local/nvim/bin:$PATH
+export PATH=$HOME/local/nvim-0.8.1/bin:$PATH
 #+end_src
 
 *Aliases:*
